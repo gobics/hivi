@@ -1,0 +1,52 @@
+\documentclass{article}
+
+
+\author{Manuel Landesfeind\\manuel@gobics.de}
+\title{HiVi User Manual\\Version 2.0}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+
+
+\section{Files distributed with HiVi}
+HiVi requires specific database files.
+
+\subsection{HiVi Database}
+A database for HiVi is a ZIP file containing exactly three files:
+\begin{description}
+	\item[info] containing a textual description of the database
+	\item[schema] contains the hierarchic data
+	\item[mapping] maps given ID against the hierarchy in \texttt{schema}
+\end{description}
+
+\paragraph{The \texttt{info} file} This file contains unstructured text that
+can be displayed in an information box in the GUI. This file is optional an
+has no purpose after all.
+
+\paragraph{The \texttt{schema} file} This file is a structured text file in
+CSV format (comma-separated-values). Each line has to contain at least two
+cells and might contain as many as wanted. The first cell of earch line is the
+accession for this entity in the hierarchy and has to be unique for this
+schema. Second cell contains a name or textual description (MUST not contain a
+tabulator). All further cells contain the parents of the current entity.
+
+\paragraph{The \texttt{mapping} file} This file maps the gene-ids to the
+entities in the schema file. A mapping file is in CSV too, using a tabulator
+symbol as separator. Each line has to split up into exactly four parts:
+\begin{enumerate}
+	\item the gene id
+	\item the schema identity it is mapped to
+	\item the quality of this assignment (this can be a numerical value of
+		whatever kind but has to be consitent within a single database, e.g.
+		MUST always be percent or always be pValue)
+	\item a textual description (e.g. FASTA header from BLAST results)
+\end{enumerate}
+
+
+
+
+\section{Inspecting the results}
+
